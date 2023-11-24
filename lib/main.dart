@@ -5,6 +5,25 @@ void main() {
   runApp(const MyApp());
 }
 
+void playSound(int num) {
+  final player = AudioPlayer();
+  player.play(AssetSource("note$num.wav"));
+}
+
+Expanded keys(int num, Color c) {
+  return Expanded(
+    child: TextButton(
+      style: TextButton.styleFrom(
+          backgroundColor: c,
+          shape: const BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
+      onPressed: () {
+        playSound(num);
+      },
+      child: Container(),
+    ),
+  );
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -15,90 +34,13 @@ class MyApp extends StatelessWidget {
             body: SafeArea(
                 child: Column(
       children: [
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.red,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note1.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.orange,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note2.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.yellow,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note3.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.green,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note4.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.teal,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note5.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note6.wav"));
-            },
-            child: Container(),
-          ),
-        ),
-        Expanded(
-          child: TextButton(
-            style: TextButton.styleFrom(
-                backgroundColor: Colors.indigo,
-                shape: BeveledRectangleBorder(borderRadius: BorderRadius.zero)),
-            onPressed: () {
-              final player = AudioPlayer();
-              player.play(AssetSource("note7.wav"));
-            },
-            child: Container(),
-          ),
-        ),
+        keys(1, Colors.red),
+        keys(2, Colors.orange),
+        keys(3, Colors.yellow),
+        keys(4, Colors.green),
+        keys(5, Colors.teal),
+        keys(6, Colors.blue),
+        keys(7, Colors.indigo)
       ],
     ))));
   }
